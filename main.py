@@ -1,19 +1,92 @@
-''' Declare uma lista para guardar as vendas do grupo central
-Declara uma lista para guardar os nomes das cinco ilhas do grupo central
-Peça dados ao utilizador e guarde-os na lista
-Após o utilizador ter inserido os 5 valores apresente:
-- Total das vendas
-- O menor valor inserido
-- O maior valor inserido
-- A média das vendas '''
-# definir variaveis
+"""
+Peça ao utilizador para inserir uma frase
+Após o utilizador ter inderido a frase apresente:
+ - Qual é o comprimento da frase inserida (incluindo espaços)
+ - Quantas palavras tem a frase
+ - Quantas vogais tem a frase
+ - Quantas letras maiusculas tem a frase
+ - Quantas letras minusculas tem a frase
+ - Quantos numeros tem a frase
+ - Apresente a frase invertida. Exemplo: A frase é 'Bom dia!' deve dar '!aid moB'
+"""
 
-lista_ilhas = ['graciosa', 'sao jorge', 'terceira', 'pico', 'faial']
-Lista_vendas = [0, 0, 0, 0, 0]
-# recolha dos valores (loop)
-# for i in enumerate(lista_ilhas):
-for i in range(0, len(lista_ilhas)):
-    valor = print(input('insira um valor das vendas para a ilha ' + lista_ilhas[i]))
-    Lista_vendas[i] = valor
-for j in range(0, len(Lista_vendas)):
-    print(Lista_vendas[j])
+if __name__ == '__main__':
+    vogais = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    frase = input('Insere uma frase: ')
+    x = 0
+    e = 0
+    for c in frase:
+        if c != ' ':
+            x += 1
+        else:
+            e += 1
+    print(f'A frase tem {x} caracters e {e} espaços')
+
+    num_vogais = 0
+    for c in frase:
+        if c in vogais:
+            num_vogais += 1
+    print(f'A frase tem {num_vogais} vogais.')
+
+    novafrase = frase.split(' ')
+    print(novafrase)
+    print(len(novafrase))
+
+    maiusculas = 0
+    minusculas = 0
+    for c in frase:
+        if c != ' ':
+            if c == c.upper():
+                maiusculas += 1
+            if c == c.lower():
+                minusculas += 1
+    print(f'A frase tem {minusculas} minusculas e {maiusculas} maisculas.')
+
+    osnums = 0
+    nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    for c in frase:
+        if c in nums:
+            osnums += 1
+    print(f'Tem {osnums} numeros')
+
+    osnums = 0
+    nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    for c in frase:
+        try:
+            if int(c) in nums:
+                osnums += 1
+        except:
+            pass
+    print(f'v2Tem {osnums} numeros')
+
+    invertido = []
+    for c in frase:
+        invertido.append(c)
+
+    nova = invertido
+
+    qtd = len(invertido) - 1
+
+    for c in frase:
+        nova[qtd] = c
+        qtd -= 1
+
+    print(f'nova = {nova}')
+    print(f"nova = {''.join(nova)}")
+
+    print(f'frase = {frase}')
+    print(f'invertido = {invertido}')
+
+"""
+    continuar = 's'
+    while continuar == 's':
+        ini = int(input('Insira o número inicial '))
+        fim = int(input('Insira o número final '))
+        primos = 0
+        for n in range(ini, fim + 1):
+            if divisores(n) == 2:
+                primos += 1
+        print(f'Entre {ini} e {fim} há {primos} de primos.')
+        continuar = input('Repetir [s | n]? ')
+    print(f'Adeus!')
+"""
